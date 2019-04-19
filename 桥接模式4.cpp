@@ -1,4 +1,4 @@
-//桥接模式2
+//桥接模式4
 #include <iostream>
 using namespace std;
 class AbstractionImp {
@@ -35,14 +35,17 @@ class ConcreteB : public AbstractionImp {
 };
 
 class Abstraction {
-	protected:
+	private:
 		AbstractionImp *pb;
 	public:
 		Abstraction(AbstractionImp *t)
 		{
 			pb = t;
 		}
-		virtual void Operation() = 0; 
+		virtual void Operation() 
+		{
+			pb -> Operation();
+		}
 		virtual ~ Abstraction()
 		{
 			cout<<"Abstraction 的析构"<<endl;
@@ -51,14 +54,11 @@ class Abstraction {
 
 class DefinedAbstractionA : public Abstraction {
 	public:
-		DefinedAbstractionA(AbstractionImp *t) : Abstraction(t) 
+		DefinedAbstractionA(AbstractionImp *t) : Abstraction(t)
 		{
 			
 		}
-		void Operation()
-		{
-			pb -> Operation();
-		}
+
 		~ DefinedAbstractionA()
 		{
 			cout<<"DefinedAbstractionA 的析构"<<endl;
@@ -67,14 +67,11 @@ class DefinedAbstractionA : public Abstraction {
 
 class DefinedAbstractionB : public Abstraction {
 	public:
-		DefinedAbstractionB(AbstractionImp *t) : Abstraction(t) 
+		DefinedAbstractionB(AbstractionImp *t) : Abstraction(t)
 		{
 			
 		}
-		void Operation()
-		{
-			pb -> Operation();
-		}
+
 		~ DefinedAbstractionB()
 		{
 			cout<<"DefinedAbstractionB 的析构"<<endl;

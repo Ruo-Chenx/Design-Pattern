@@ -58,6 +58,10 @@ class DefinedAbstractionA : public Abstraction {
 		{
 			
 		}
+		void Operation() 
+		{
+			Abstraction :: Operation();
+		}
 		~ DefinedAbstractionA()
 		{
 			cout<<"DefinedAbstractionA µÄÎö¹¹"<<endl;
@@ -69,6 +73,10 @@ class DefinedAbstractionB : public Abstraction {
 		DefinedAbstractionB(AbstractionImp *t) : Abstraction(t)
 		{
 			
+		}
+		void Operation() 
+		{
+			Abstraction :: Operation();
 		}
 		~ DefinedAbstractionB()
 		{
